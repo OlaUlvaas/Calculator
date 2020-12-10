@@ -1,163 +1,88 @@
 package se.lexicon.Ola;
 
 /**
- * Calculator
+ * Calculator - You can calculate mathematics operation like addition,
+ * subtraction, multiplication, division and modulo division.
+ * And ofcourse you can not divide buy zero.
  *
  */
+
 import java.util.Scanner;
-public class Calculator
-{
-    public static void main( String[] args )
-    {
-        meny();
-        Scanner scanner = new Scanner(System.in);
-        double operation = scanner.nextDouble();
-        double result = 0;
-
-        if(operation == 1)
-        {
-            add();
-        }
-        else if(operation == 2)
-        {
-            sub();
-        }
-        else if(operation == 3)
-        {
-            mul();
-        }
-        else if(operation == 4)
-        {
-            div();
-        }
-        else if(operation == 5)
-        {
-            mod();
-        }
-
-        scanner.close();
+public class Calculator {
+    public static void meny() {
+        System.out.println("************CALCULATOR*************");
+        System.out.println("*\t\t 1. Addition              *");
+        System.out.println("*\t\t 2. Subtraction           *");
+        System.out.println("*\t\t 3. Multiplication        *");
+        System.out.println("*\t\t 4. Division              *");
+        System.out.println("*\t\t 5. Modulo                *");
+        System.out.println("*\t\t 9. Quit                  *");
+        System.out.println("************CALCULATOR*************");
     }
-    public static void meny()
-    {
-    System.out.println( "************CALCULATOR*************" );
-    System.out.println( "*\t\t 1. Addition              *" );
-    System.out.println( "*\t\t 2. Subtraction           *" );
-    System.out.println( "*\t\t 3. Multiplication        *" );
-    System.out.println( "*\t\t 4. Division              *" );
-    System.out.println( "*\t\t 5. Modulo                *" );
-    System.out.println( "*\t\t 9. Quit                  *" );
-    System.out.println( "************CALCULATOR*************" );
-    }
-    public static void add()
-    {
-        double result = 0;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number: ");
-        result += scanner.nextDouble();
-        System.out.println("Enter one more number: ");
-        result += scanner.nextDouble();
-        System.out.println("Do you want to enter another number?: ");
-        System.out.println("1. YES: ");
-        System.out.println("2. NO: ");
-        double keepGoing = scanner.nextDouble();
 
-        while(keepGoing == 1){
-            System.out.println("Enter one more number: ");
-            result += scanner.nextDouble();
-            System.out.println("Do you want to enter another number?: ");
-            System.out.println("1. YES: ");
-            System.out.println("2. NO: ");
-            double whatToDo = scanner.nextDouble();
-            if(whatToDo == 2){
-                System.out.println("The result from the addition is: " + result);
-                break;
+
+    public static void main(String[] args){
+        Scanner scanner =  new Scanner(System.in);
+        char operation;
+        double denominator, result;
+        boolean on = true;
+
+        do{
+            meny();
+            System.out.println("Specify the type of calculation: ");
+            operation = scanner.next().charAt(0);
+            switch (operation)
+            {
+                case '1' : System.out.println("Enter the first number: ");
+                    result = scanner.nextDouble();
+                    System.out.println("Enter the second number: ");
+                    result += scanner.nextDouble();
+                    System.out.println("The result of the addition is: " + result);
+                    break;
+                case '2' : System.out.println("Enter the first number: ");
+                    result = scanner.nextDouble();
+                    System.out.println("Enter the second number: ");
+                    result -= scanner.nextDouble();
+                    System.out.println("The result of the subtraction is: " + result);
+                    break;
+                case '3' : System.out.println("Enter the first number: ");
+                    result = scanner.nextDouble();
+                    System.out.println("Enter the second number: ");
+                    result *= scanner.nextDouble();
+                    System.out.println("The result of the multiplication is: " + result);
+                    break;
+                case '4' : System.out.println("Enter the first number: ");
+                    result = scanner.nextDouble();
+                    System.out.println("Enter the second number: ");
+                    denominator = scanner.nextDouble();
+                    if(denominator == 0) {
+                        System.out.println("NO NO NO - This is absolutely forbidden.");
+                        System.out.println("You are NOT allowed to divide with zero!");
+                    }else{
+                        result = result / denominator;
+                        System.out.println("The result of the division is: " + result);
+                    }
+                    break;
+                case '5' : System.out.println("Enter the first number: ");
+                    result = scanner.nextDouble();
+                    System.out.println("Enter the second number: ");
+                    denominator = scanner.nextDouble();
+                    if(denominator == 0) {
+                        System.out.println("NO NO NO - This is absolutely forbidden.");
+                        System.out.println("You are NOT allowed to divide with zero!");
+                    }else{
+                        result = result % denominator;
+                        System.out.println("The result of the modulo division is: " + result);
+                    }
+                    break;
+                case '9' : System.out.println("Calculator is turned off.");
+                    on = false;
+                    break;
+
+                default : System.out.println("This is NOT an alternative.");
+                    break;
             }
-        }
-        if(keepGoing == 2){
-            System.out.println("The result from the addition is: " + result);
+        }while(on);
 
-        }
-    scanner.close();
-    }
-
-    public static void sub()
-    {
-        double result = 0;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number: ");
-        result += scanner.nextDouble();
-        System.out.println("Enter one more number: ");
-        result -= scanner.nextDouble();
-        System.out.println("Do you want to enter another number?: ");
-        System.out.println("1. YES: ");
-        System.out.println("2. NO: ");
-        double keepGoing = scanner.nextDouble();
-
-        while(keepGoing == 1){
-            System.out.println("Enter one more number: ");
-            result -= scanner.nextDouble();
-            System.out.println("Do you want to enter another number?: ");
-            System.out.println("1. YES: ");
-            System.out.println("2. NO: ");
-            double whatToDo = scanner.nextDouble();
-            if(whatToDo == 2){
-                System.out.println("The result from the subtraction is: " + result);
-                break;
-            }
-        }
-        if(keepGoing == 2){
-            System.out.println("The result from the subtraction is: " + result);
-
-        }
-        scanner.close();
-    }
-
-    public static void mul()
-    {
-        double result = 0;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number: ");
-        result += scanner.nextDouble();
-        System.out.println("Enter one more number: ");
-        result *= scanner.nextDouble();
-        System.out.println("The result from the multiplication is: " + result);
-
-        scanner.close();
-    }
-    public static void div()
-    {
-        double result = 0;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number: ");
-        result += scanner.nextDouble();
-        System.out.println("Enter one more number: ");
-        double denominator = scanner.nextDouble();
-
-        if(denominator == 0){
-            System.out.println("NO NO NO - Absolutely forbidden!");
-        }
-        else{
-            result /= denominator;
-            System.out.println("The result from the division is: " + result);
-        }
-        scanner.close();
-    }
-    public static void mod()
-    {
-        double result = 0;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number: ");
-        result += scanner.nextDouble();
-        System.out.println("Enter one more number: ");
-        double denominator = scanner.nextDouble();
-
-        if(denominator == 0){
-            System.out.println("NO NO NO - Absolutely forbidden!");
-        }
-        else{
-            result %= denominator;
-            System.out.println("The result from the modulo division is: " + result);
-        }
-        scanner.close();
     }
 }
