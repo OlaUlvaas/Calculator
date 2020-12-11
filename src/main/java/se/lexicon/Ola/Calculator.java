@@ -1,4 +1,6 @@
+
 package se.lexicon.Ola;
+
 
 /**
  * Calculator - You can calculate mathematics operation like addition,
@@ -6,6 +8,7 @@ package se.lexicon.Ola;
  * And ofcourse you can not divide buy zero.
  *
  */
+
 
 import java.util.Scanner;
 public class Calculator {
@@ -33,17 +36,59 @@ public class Calculator {
             operation = scanner.next().charAt(0);
             switch (operation)
             {
+
                 case '1' : System.out.println("Enter the first number: ");
                     result = scanner.nextDouble();
                     System.out.println("Enter the second number: ");
                     result += scanner.nextDouble();
-                    System.out.println("The result of the addition is: " + result);
+                    System.out.println("Do you want to enter another number?: ");
+                    System.out.println("1. YES: ");
+                    System.out.println("2. NO: ");
+                    double keepGoing = scanner.nextDouble();
+
+                    while(keepGoing == 1){
+                        System.out.println("Enter one more number: ");
+                        result += scanner.nextDouble();
+                        System.out.println("Do you want to enter another number?: ");
+                        System.out.println("1. YES: ");
+                        System.out.println("2. NO: ");
+                        double whatToDo = scanner.nextDouble();
+
+                        if(whatToDo == 2){
+                        System.out.println("The result from the addition is: " + result);
+                        break;
+                        }
+                    }
+                    if(keepGoing == 2){
+                        System.out.println("The result from the addition is: " + result);
+                    }
                     break;
+
                 case '2' : System.out.println("Enter the first number: ");
                     result = scanner.nextDouble();
                     System.out.println("Enter the second number: ");
                     result -= scanner.nextDouble();
-                    System.out.println("The result of the subtraction is: " + result);
+                    System.out.println("Do you want to enter another number?: ");
+                    System.out.println("1. YES: ");
+                    System.out.println("2. NO: ");
+                    double keepOn = scanner.nextDouble();
+
+                    while(keepOn == 1){
+                        System.out.println("Enter one more number: ");
+                        result -= scanner.nextDouble();
+                        System.out.println("Do you want to enter another number?: ");
+                        System.out.println("1. YES: ");
+                        System.out.println("2. NO: ");
+                        double whatToDo = scanner.nextDouble();
+
+                        if(whatToDo == 2){
+                            System.out.println("The result from the subtraction is: " + result);
+                            break;
+                        }
+                    }
+                    if(keepOn == 2){
+                        System.out.println("The result from the addition is: " + result);
+                    }
                     break;
                 case '3' : System.out.println("Enter the first number: ");
                     result = scanner.nextDouble();
@@ -86,3 +131,4 @@ public class Calculator {
 
     }
 }
+
